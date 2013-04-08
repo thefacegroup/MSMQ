@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using System.Messaging;
 using System.Runtime.Serialization;
 
+/*
+ * Based off of the tutorial found here: http://fransiscuss.com/2012/06/01/msmq-basic-tutorial/
+ * @bccain
+ */
+
 namespace msmqreceiver
 {
     class Program

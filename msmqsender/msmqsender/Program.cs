@@ -34,9 +34,14 @@ namespace msmqsender
         static void Main(string[] args)
         {
             Console.WriteLine("Send me");
+            int n = 0;
 
             Program p = new Program();
-            p.SendMessage("Hello world!");
+            while (true)
+            {
+                p.SendMessage("Heeellloooo wooorrrlllddddd message number #" + n++);
+            }
+            
         }
     }
 }
