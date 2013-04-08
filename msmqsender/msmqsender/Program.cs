@@ -15,7 +15,7 @@ namespace msmqsender
 {
     class Program
     {
-        private const string MESSAGE_QUEUE = @".\Private$\SampleQueue";
+        private const string MESSAGE_QUEUE = @".\Private$\sendqueue";
         //private const string REMOTE_QUEUE = "FormatName:Direct=TCP:10.27.41.4\\private$\\receiveQueue";
 
         private MessageQueue _queue;
@@ -33,14 +33,17 @@ namespace msmqsender
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Send me");
+            Console.Write("Enter something to send: ");
             int n = 0;
 
             Program p = new Program();
-            while (true)
-            {
-                p.SendMessage("Heeellloooo wooorrrlllddddd message number #" + n++);
-            }
+            //while (true)
+            //{
+            //    p.SendMessage("Heeellloooo wooorrrlllddddd message number #" + n++);
+            //}
+            String msg = "";
+            msg = Console.ReadLine();
+            p.SendMessage(msg);
             
         }
     }
