@@ -1,0 +1,5 @@
+C:\Users\brian\Dropbox\School\CIS726\MSMQ\msmqreceiver\msmqreceiver\bin\Debug\msmqreceiver.exe.config
+C:\Users\brian\Dropbox\School\CIS726\MSMQ\msmqreceiver\msmqreceiver\bin\Debug\msmqreceiver.exe
+C:\Users\brian\Dropbox\School\CIS726\MSMQ\msmqreceiver\msmqreceiver\bin\Debug\msmqreceiver.pdb
+C:\Users\brian\Dropbox\School\CIS726\MSMQ\msmqreceiver\msmqreceiver\obj\Debug\msmqreceiver.exe
+C:\Users\brian\Dropbox\School\CIS726\MSMQ\msmqreceiver\msmqreceiver\obj\Debug\msmqreceiver.pdb
