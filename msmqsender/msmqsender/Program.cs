@@ -23,6 +23,7 @@ namespace msmqsender
         {
             _queue = new MessageQueue(MESSAGE_QUEUE);
             Message msg = new Message();
+            msg.Body = message;
             msg.Label = "Presentation at " + DateTime.Now.ToString();
             _queue.Send(msg);
 
@@ -34,7 +35,7 @@ namespace msmqsender
             Console.WriteLine("Send me");
 
             Program p = new Program();
-            p.SendMessage("Hello thar");
+            p.SendMessage("Hello world!");
         }
     }
 }

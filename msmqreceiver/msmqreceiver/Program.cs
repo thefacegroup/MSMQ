@@ -24,7 +24,7 @@ namespace msmqreceiver
             }
             catch (Exception e)
             {
-                Console.WriteLine("No message");
+                //Console.WriteLine(e);
             }
         }
 
