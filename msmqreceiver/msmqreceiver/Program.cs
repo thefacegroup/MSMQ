@@ -34,6 +34,9 @@ namespace msmqreceiver
     {
         private const string MESSAGE_QUEUE = @".\Private$\servicequeue";
 
+        //private static List<String> thisWasSerialized = null;
+        //private static XmlSerializer xs = new XmlSerializer(typeof(List<String>));
+
         private static void checkMessage()
         {
             try
@@ -52,6 +55,16 @@ namespace msmqreceiver
                 Console.WriteLine(ds.degreeProgramID);
                 Console.WriteLine(ds.userID);
                 Console.WriteLine(ds.semesterID);
+
+                // Lets just assume for this baby example that we know the message will be xml.
+                //TextReader reader = new StringReader(message.Body.ToString());
+                //thisWasSerialized = (List<String>)xs.Deserialize(reader);
+
+                //foreach (String s in thisWasSerialized)
+                //{
+                //    Console.WriteLine(s);
+                //}
+
             }
             catch (Exception e)
             {

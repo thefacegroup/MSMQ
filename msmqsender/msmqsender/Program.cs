@@ -34,6 +34,21 @@ namespace msmqsender
     class Program
     {
 
+        //private List<String> serializeThis = null;
+        //private XmlSerializer xs = null;
+        //private TextWriter writer = null;
+
+//        public Program()
+//        {
+//            serializeThis = new List<String>();
+//            serializeThis.Add("one");
+//            serializeThis.Add("two");
+//            serializeThis.Add("three");
+//
+//            xs = new XmlSerializer(typeof(List<String>));
+//            writer = new StringWriter(); //Instead of StreamWriter, we want to write to a string!
+//        }
+
         private const string MESSAGE_QUEUE = @".\Private$\servicequeue";
         private MessageQueue _queue;
 
@@ -66,6 +81,8 @@ namespace msmqsender
             //Send that instance of DummyStruct
             Program p = new Program();
             Console.WriteLine("Sending");
+            //p.xs.Serialize(p.writer, p.serializeThis);
+            //msg = p.writer.ToString();
             
             foreach (Plan pl in planLst)
             {
