@@ -21,7 +21,7 @@ using System.IO; //needed for TextWriter
 
 namespace msmqreceiver
 {
-    public struct DummyStruct
+    public struct Plan
     {
         public int ID;
         public string planName;
@@ -40,19 +40,18 @@ namespace msmqreceiver
             {
                 var queue = new MessageQueue(MESSAGE_QUEUE);
 
-                DummyStruct ds = new DummyStruct();
+                Plan ds = new Plan();
                 Object o = new Object();
                 System.Type[] arryTypes = new System.Type[2];
                 arryTypes[0] = ds.GetType();
                 arryTypes[1] = o.GetType();
                 queue.Formatter = new XmlMessageFormatter(arryTypes);
-                ds = ((DummyStruct)queue.Receive().Body);
+                ds = ((Plan)queue.Receive().Body);
                 Console.WriteLine(ds.ID);
                 Console.WriteLine(ds.planName);
                 Console.WriteLine(ds.degreeProgramID);
                 Console.WriteLine(ds.userID);
                 Console.WriteLine(ds.semesterID);
-
             }
             catch (Exception e)
             {

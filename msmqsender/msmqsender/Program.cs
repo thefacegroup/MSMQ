@@ -22,7 +22,7 @@ using System.IO; //needed for TextWriter
 namespace msmqsender
 {
 
-    public struct DummyStruct
+    public struct Plan
     {
         public int ID;
         public string planName;
@@ -39,7 +39,7 @@ namespace msmqsender
 
 
         //Method to send the struct using MSMQ
-        private void sendStruct(DummyStruct mystruct)
+        private void sendStruct(Plan mystruct)
         {
             _queue = new MessageQueue(MESSAGE_QUEUE);
             Message msg = new Message();
@@ -49,21 +49,28 @@ namespace msmqsender
 
         static void Main(string[] args)
         {
+            List<Plan> planLst = new List<Plan>();
 
-            //Define a instance of DummyStruct
-            DummyStruct ds = new DummyStruct();
-            ds.ID = 42;
-            ds.planName = "The Plan";
-            ds.degreeProgramID = 1337;
-            ds.userID = 1984;
-            ds.semesterID = 2013;
+            for (int i = 0; i < 30; i++)
+            {
+                //Define a instance of DummyStruct
+                Plan ds = new Plan();
+                ds.ID = i;
+                ds.planName = "The Plan " + i;
+                ds.degreeProgramID = 1337;
+                ds.userID = 1984;
+                ds.semesterID = 2013;
+                planLst.Add(ds);
+            }
 
             //Send that instance of DummyStruct
             Program p = new Program();
             Console.WriteLine("Sending");
-            p.sendStruct(ds);
-
-
+            
+            foreach (Plan pl in planLst)
+            {
+                p.sendStruct(pl);
+            }
         }
     }
 
