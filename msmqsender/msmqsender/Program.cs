@@ -30,6 +30,10 @@ namespace msmqsender
             serializeThis.Add("one");
             serializeThis.Add("two");
             serializeThis.Add("three");
+            serializeThis.Add("four");
+            serializeThis.Add("five");
+            serializeThis.Add("six"); 
+            serializeThis.Add("seven");
 
             xs = new XmlSerializer(typeof(List<String>));
             writer = new StringWriter(); //Instead of StreamWriter, we want to write to a string!
