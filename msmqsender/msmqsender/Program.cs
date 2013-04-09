@@ -12,74 +12,63 @@ using System.IO; //needed for TextWriter
  * Based off of the tutorial found here: http://fransiscuss.com/2012/06/01/msmq-basic-tutorial/
  * @bccain
  * 
+ * Rewritten based of the following tutorial found here: http://support.microsoft.com/kb/815811
+ * @hyates
+ * 
  * Xml Serialization : http://msdn.microsoft.com/en-us/library/58a18dwa.aspx 
  * @csalazar
  */
 
 namespace msmqsender
 {
+
+    public struct DummyStruct
+    {
+        public int ID;
+        public string planName;
+        public int degreeProgramID;
+        public int userID;
+        public int semesterID;
+    }
+
     class Program
     {
-        private List<String> serializeThis = null;
-        private XmlSerializer xs = null;
-        private TextWriter writer = null;
 
-        public Program()
-        {
-            serializeThis = new List<String>();
-            serializeThis.Add("one");
-            serializeThis.Add("two");
-            serializeThis.Add("three");
-            serializeThis.Add("four");
-            serializeThis.Add("five");
-            serializeThis.Add("six"); 
-            serializeThis.Add("seven");
-
-            xs = new XmlSerializer(typeof(List<String>));
-            writer = new StringWriter(); //Instead of StreamWriter, we want to write to a string!
-        }
-
-
-        //private const string MESSAGE_QUEUE = @".\Private$\visualizerqueue";
         private const string MESSAGE_QUEUE = @".\Private$\servicequeue";
-
-        //private const string REMOTE_QUEUE = "FormatName:Direct=TCP:10.27.41.4\\private$\\receiveQueue";
-
         private MessageQueue _queue;
 
-        private void SendMessage(string message)
+
+        //Method to send the struct using MSMQ
+        private void sendStruct(DummyStruct mystruct)
         {
             _queue = new MessageQueue(MESSAGE_QUEUE);
             Message msg = new Message();
-            msg.Body = message;
-            msg.Label = "Presentation at " + DateTime.Now.ToString();
+            msg.Body = mystruct;
             _queue.Send(msg);
-
-            //lblError.Text = "Message already sent";
         }
+
 
         static void Main(string[] args)
         {
-            Console.Write("Enter something to send: ");
-            int n = 0;
 
+            //Define a instance of DummyStruct
+            DummyStruct ds = new DummyStruct();
+            ds.ID = 42;
+            ds.planName = "The Plan";
+            ds.degreeProgramID = 1337;
+            ds.userID = 1984;
+            ds.semesterID = 2013;
+
+            //Send that instance of DummyStruct
             Program p = new Program();
-            //while (true)
-            //{
-            //    p.SendMessage("Heeellloooo wooorrrlllddddd message number #" + n++);
-            //}
-            String msg = "";
-            //msg = Console.ReadLine();
+            Console.WriteLine("Sending");
+            p.sendStruct(ds);
 
-            p.xs.Serialize(p.writer, p.serializeThis);
-            msg = p.writer.ToString();
-            //Console.WriteLine(msg);
-            p.SendMessage(msg);
-            while (true)
-            {
-                //derp
-            }
-            
+
         }
     }
+
+
+
+
 }

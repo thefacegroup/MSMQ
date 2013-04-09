@@ -12,55 +12,69 @@ using System.IO; //needed for TextWriter
  * Based off of the tutorial found here: http://fransiscuss.com/2012/06/01/msmq-basic-tutorial/
  * @bccain
  * 
+ * Rewritten based of the following tutorial found here: http://support.microsoft.com/kb/815811
+ * @hyates
+ * 
  * Xml Serialization : http://msdn.microsoft.com/en-us/library/58a18dwa.aspx 
  * @csalazar
  */
 
 namespace msmqreceiver
 {
+    public struct DummyStruct
+    {
+        public int ID;
+        public string planName;
+        public int degreeProgramID;
+        public int userID;
+        public int semesterID;
+    }
+
+
     class Program
     {
-        private static List<String> thisWasSerialized = null;
-        private static XmlSerializer xs = new XmlSerializer(typeof(List<String>));
-
 
         private const string MESSAGE_QUEUE = @".\Private$\servicequeue";
-        //private const string REMOTE_QUEUE = "FormatName:Direct=TCP:10.27.41.4\\private$\\receiveQueue";
 
-        private static void CheckMessage()
+        private static void checkMessage()
         {
             try
             {
+
                 var queue = new MessageQueue(MESSAGE_QUEUE);
-                var message = queue.Receive(new TimeSpan(0, 0, 1));
 
-                message.Formatter = new XmlMessageFormatter(new String[] { "System.String,mscorlib" });
+                DummyStruct ds = new DummyStruct();
+                Object o = new Object();
+                System.Type[] arryTypes = new System.Type[2];
+                arryTypes[0] = ds.GetType();
+                arryTypes[1] = o.GetType();
+                queue.Formatter = new XmlMessageFormatter(arryTypes);
+                ds = ((DummyStruct)queue.Receive().Body);
+                Console.WriteLine(ds.ID);
+                Console.WriteLine(ds.planName);
+                Console.WriteLine(ds.degreeProgramID);
+                Console.WriteLine(ds.userID);
+                Console.WriteLine(ds.semesterID);
 
-                // Lets just assume for this baby example that we know the message will be xml and that it needs to be casted to a List<String>.
-
-                TextReader reader = new StringReader(message.Body.ToString());
-                thisWasSerialized = (List<String>)xs.Deserialize(reader);
-
-                foreach (String s in thisWasSerialized)
-                {
-                    Console.WriteLine(s);
-                }
-
-                //Console.WriteLine(message.Body.ToString());
             }
             catch (Exception e)
             {
                 //Console.WriteLine(e);
+
             }
+
         }
+
 
         static void Main(string[] args)
         {
             Console.WriteLine("Recieve me");
             while (true)
             {
-                CheckMessage();
+                checkMessage();
             }
+
         }
     }
+
 }

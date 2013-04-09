@@ -4,3 +4,9 @@ C:\Users\brian\Dropbox\School\CIS726\MSMQ\msmqsender\msmqsender\bin\Debug\msmqse
 C:\Users\brian\Dropbox\School\CIS726\MSMQ\msmqsender\msmqsender\obj\Debug\msmqsender.csprojResolveAssemblyReference.cache
 C:\Users\brian\Dropbox\School\CIS726\MSMQ\msmqsender\msmqsender\obj\Debug\msmqsender.exe
 C:\Users\brian\Dropbox\School\CIS726\MSMQ\msmqsender\msmqsender\obj\Debug\msmqsender.pdb
+C:\Users\geekyomega\Documents\CIS726\MSMQ\msmqsender\msmqsender\bin\Debug\msmqsender.exe.config
+C:\Users\geekyomega\Documents\CIS726\MSMQ\msmqsender\msmqsender\obj\Debug\msmqsender.exe
+C:\Users\geekyomega\Documents\CIS726\MSMQ\msmqsender\msmqsender\obj\Debug\msmqsender.pdb
+C:\Users\geekyomega\Documents\CIS726\MSMQ\msmqsender\msmqsender\bin\Debug\msmqsender.exe
+C:\Users\geekyomega\Documents\CIS726\MSMQ\msmqsender\msmqsender\bin\Debug\msmqsender.pdb
+C:\Users\geekyomega\Documents\CIS726\MSMQ\msmqsender\msmqsender\obj\Debug\msmqsender.csprojResolveAssemblyReference.cache
