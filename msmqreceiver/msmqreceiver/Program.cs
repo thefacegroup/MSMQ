@@ -36,7 +36,7 @@ namespace msmqreceiver
 
                 message.Formatter = new XmlMessageFormatter(new String[] { "System.String,mscorlib" });
 
-                // Lets just assume for this baby example that we know the message will be xml.
+                // Lets just assume for this baby example that we know the message will be xml and that it needs to be casted to a List<String>.
 
                 TextReader reader = new StringReader(message.Body.ToString());
                 thisWasSerialized = (List<String>)xs.Deserialize(reader);
