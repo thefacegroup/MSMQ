@@ -30,17 +30,14 @@ namespace msmqreceiver
         public int semesterID;
     }
 
-
     class Program
     {
-
         private const string MESSAGE_QUEUE = @".\Private$\servicequeue";
 
         private static void checkMessage()
         {
             try
             {
-
                 var queue = new MessageQueue(MESSAGE_QUEUE);
 
                 DummyStruct ds = new DummyStruct();
@@ -60,11 +57,9 @@ namespace msmqreceiver
             catch (Exception e)
             {
                 //Console.WriteLine(e);
-
             }
 
         }
-
 
         static void Main(string[] args)
         {
@@ -76,5 +71,4 @@ namespace msmqreceiver
 
         }
     }
-
 }

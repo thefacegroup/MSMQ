@@ -47,7 +47,6 @@ namespace msmqsender
             _queue.Send(msg);
         }
 
-
         static void Main(string[] args)
         {
 
@@ -67,8 +66,5 @@ namespace msmqsender
 
         }
     }
-
-
-
 
 }
