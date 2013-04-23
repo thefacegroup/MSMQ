@@ -50,6 +50,7 @@ namespace msmqsender
 //        }
 
         private const string MESSAGE_QUEUE = @".\Private$\servicequeue";
+        //private const string REMOTE_QUEUE = "FormatName:Direct=TCP:10.27.41.4\\private$\\receiveQueue";
         private MessageQueue _queue;
 
 
